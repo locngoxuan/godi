@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 )
 
@@ -10,6 +9,13 @@ type IEvent interface {
 }
 
 func NewEvent() IEvent {
+	return &Event{}
+}
+
+type Event struct {
+}
+
+func (e Event) Start() {
 	var greeter IGreeter
 	err := container.Invoke(func(g IGreeter) {
 		greeter = g
@@ -17,14 +23,6 @@ func NewEvent() IEvent {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	return &Event{Greeter: greeter}
-}
-
-type Event struct {
-	Greeter IGreeter
-}
-
-func (e Event) Start() {
-	msg := e.Greeter.Greet()
-	fmt.Println(msg)
+	msg := greeter.Greet()
+	log.Println(msg.Value())
 }

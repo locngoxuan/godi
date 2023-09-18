@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "log"
 
 type IEvent interface {
 	Start()
@@ -18,5 +16,5 @@ type Event struct {
 
 func (e Event) Start() {
 	msg := e.Greeter.Greet()
-	fmt.Println(msg)
+	log.Println(msg.Value())
 }
