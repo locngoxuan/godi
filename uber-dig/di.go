@@ -1,5 +1,9 @@
 package main
 
+import "go.uber.org/dig"
+
+var container = dig.New()
+
 func Initialize() error {
 	err := container.Provide(func() string {
 		return "Hi There"

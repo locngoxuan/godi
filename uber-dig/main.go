@@ -2,11 +2,7 @@ package main
 
 import (
 	"log"
-
-	"go.uber.org/dig"
 )
-
-var container = dig.New()
 
 func main() {
 	Initialize()
